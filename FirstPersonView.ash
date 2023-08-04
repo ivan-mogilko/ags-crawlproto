@@ -97,7 +97,8 @@ struct CellViewSchema {
 // Current grid view schema setup
 import CellViewSchema CV_Schema;
 
-
+// FIXME: make a FirstPersonView property
+#define FIRST_PERSON_HALF_WALLS (1)
 
 // FirstPersonView class draws a pseudo-3D first person view of a map as if visible
 // from the player's eyes.
