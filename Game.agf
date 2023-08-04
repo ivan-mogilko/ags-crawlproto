@@ -33,7 +33,7 @@
       <DialogScriptSayFunction IsNull="True" />
       <DisplayMultipleInventory>False</DisplayMultipleInventory>
       <EnforceNewAudio>True</EnforceNewAudio>
-      <ExtendedCompiler>False</ExtendedCompiler>
+      <ExtendedCompiler>True</ExtendedCompiler>
       <GUIDAsString>{5e34d5b9-aabf-4385-893a-382845e45937}</GUIDAsString>
       <GameFileName>woodrot</GameFileName>
       <GameName>woodrot</GameName>
@@ -1414,6 +1414,102 @@
       <ScriptFolder Name="Main">
         <SubFolders />
         <ScriptAndHeaders>
+          <ScriptAndHeader>
+            <ScriptAndHeader_Header>
+              <Script>
+                <FileName>Test.ash</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>1925836942</Key>
+                <IsHeader>True</IsHeader>
+              </Script>
+            </ScriptAndHeader_Header>
+            <ScriptAndHeader_Script>
+              <Script>
+                <FileName>Test.asc</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>1925836942</Key>
+                <IsHeader>False</IsHeader>
+              </Script>
+            </ScriptAndHeader_Script>
+          </ScriptAndHeader>
+          <ScriptAndHeader>
+            <ScriptAndHeader_Header>
+              <Script>
+                <FileName>Drawing.ash</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>1505270956</Key>
+                <IsHeader>True</IsHeader>
+              </Script>
+            </ScriptAndHeader_Header>
+            <ScriptAndHeader_Script>
+              <Script>
+                <FileName>Drawing.asc</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>1505270956</Key>
+                <IsHeader>False</IsHeader>
+              </Script>
+            </ScriptAndHeader_Script>
+          </ScriptAndHeader>
+          <ScriptAndHeader>
+            <ScriptAndHeader_Header>
+              <Script>
+                <FileName>FirstPersonView.ash</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>903881860</Key>
+                <IsHeader>True</IsHeader>
+              </Script>
+            </ScriptAndHeader_Header>
+            <ScriptAndHeader_Script>
+              <Script>
+                <FileName>FirstPersonView.asc</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>903881860</Key>
+                <IsHeader>False</IsHeader>
+              </Script>
+            </ScriptAndHeader_Script>
+          </ScriptAndHeader>
+          <ScriptAndHeader>
+            <ScriptAndHeader_Header>
+              <Script>
+                <FileName>WoodRot.ash</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>804546991</Key>
+                <IsHeader>True</IsHeader>
+              </Script>
+            </ScriptAndHeader_Header>
+            <ScriptAndHeader_Script>
+              <Script>
+                <FileName>WoodRot.asc</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>804546991</Key>
+                <IsHeader>False</IsHeader>
+              </Script>
+            </ScriptAndHeader_Script>
+          </ScriptAndHeader>
           <ScriptAndHeader>
             <ScriptAndHeader_Header>
               <Script>

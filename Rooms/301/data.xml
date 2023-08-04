@@ -24,7 +24,7 @@
     <Event Index="2" />
     <Event Index="3" />
     <Event Index="4" />
-    <Event Index="5" />
+    <Event Index="5">room_Load</Event>
     <Event Index="6" />
     <Event Index="7" />
     <Event Index="8" />
