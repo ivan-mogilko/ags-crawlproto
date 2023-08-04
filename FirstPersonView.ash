@@ -48,6 +48,7 @@
 // easily derived from ones above).
 //
 
+// FIXME: these are grid lines limits!! replace w cells?
 #define CELLVIEW_MAX_ROWS			(6)
 #define CELLVIEW_MAX_COLS			(12)
 #define CELLVIEW_MAX_SPACE			(CELLVIEW_MAX_ROWS * CELLVIEW_MAX_COLS)
@@ -71,8 +72,9 @@ struct CellViewStrip {
 struct CellViewSchema {
 	int Width;    // viewport width
 	int Height;   // viewport height
-	int RowCount; // number of near->far view cells
-	int ColCount; // number of left->right view cells
+	// FIXME: these are grid lines limits!! replace w cells?
+	int RowCount; // number of near->far grid lines
+	int ColCount; // number of left->right grid lines
 
 	// TODO: need this??
 	// scale down factors for entities (items, objects and mobs)
@@ -80,7 +82,7 @@ struct CellViewSchema {
 	//float RowScaling; // scale factor, applied per each row of cells
 	//float ColScaling; // scale factor, applied per each column of cells
 
-	// These are vertex positions!!
+	// These are vertex (grid) positions!!
 	CellViewStrip Strips[CELLVIEW_MAX_ROWS];
 
 	// Setup basic schema properties
@@ -101,4 +103,11 @@ struct FirstPersonView {
 	import static void DrawViewport(DrawingSurface* ds, int color);
 	// Draws a grid frame for testing purposes
 	import static void DrawGridFrame(DrawingSurface* ds, int cell_color, int wall_color);
+	// Draws particular map cell in viewport
+	import static void DrawCell(DrawingSurface *ds, WorldPosition *eye,
+		int mapx, int mapy, int row, int col);
+	// Draws current view as seen from the given pos into given direction
+	// TODO: for optimization, we might keep record of which cell views are "clean"
+	// and which are "dirty" and only redraw latter.
+	import static void DrawLocation(DrawingSurface *ds, WorldPosition *eye);
 };

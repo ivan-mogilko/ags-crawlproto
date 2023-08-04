@@ -6,6 +6,13 @@ struct WoodRotConstants {
 	static const int VIEW_COLS = 12;
 };
 
-struct WoodRotView {
-	import static void Draw(DrawingSurface *dest, int x, int y);
+struct WoodRotGame {
+	import static void DrawGrid(DrawingSurface *dest, int x, int y);
+	import static void DrawPlayerView(DrawingSurface *dest, int x, int y);
+	
+	import static bool TryWalk(WorldPosition *who, int dx, int dy);
+	import static WorldDirection Turn(WorldPosition *who, bool clockwise);
+	import static WorldDirection Face(WorldPosition *who, WorldDirection dir);
 };
+
+import WorldPosition *playerEye;
