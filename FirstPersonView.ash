@@ -49,11 +49,11 @@
 //
 
 // FIXME: these are grid lines limits!! replace w cells?
+// FIXME: distinct sizes of CELLS, and VERTICES
 #define CELLVIEW_MAX_ROWS			(6)
 #define CELLVIEW_MAX_COLS			(12)
 #define CELLVIEW_MAX_SPACE			(CELLVIEW_MAX_ROWS * CELLVIEW_MAX_COLS)
 
-// TODO: need this??
 enum CellViewTile {
 	eCVTile_Floor, 
 	eCVTile_Ceil, 
@@ -73,6 +73,7 @@ struct CellViewSchema {
 	int Width;    // viewport width
 	int Height;   // viewport height
 	// FIXME: these are grid lines limits!! replace w cells?
+	// FIXME: distinct sizes of CELLS, and VERTICES
 	int RowCount; // number of near->far grid lines
 	int ColCount; // number of left->right grid lines
 
@@ -99,15 +100,31 @@ import CellViewSchema CV_Schema;
 // FirstPersonView class draws a pseudo-3D first person view of a map as if visible
 // from the player's eyes.
 struct FirstPersonView {
+	
+	//
+	// Methods for drawing the first person view on a drawing surface
+	//
 	// Draws a rectangle around viewport
 	import static void DrawViewport(DrawingSurface* ds, int color);
 	// Draws a grid frame for testing purposes
 	import static void DrawGridFrame(DrawingSurface* ds, int cell_color, int wall_color);
+	// Draws current view as seen from the given pos into given direction
+	import static void DrawLocation(DrawingSurface *ds, WorldPosition *eye);
 	// Draws particular map cell in viewport
 	import static void DrawCell(DrawingSurface *ds, WorldPosition *eye,
 		int mapx, int mapy, int row, int col);
-	// Draws current view as seen from the given pos into given direction
-	// TODO: for optimization, we might keep record of which cell views are "clean"
-	// and which are "dirty" and only redraw latter.
-	import static void DrawLocation(DrawingSurface *ds, WorldPosition *eye);
+	
+	//
+	// Methods for constructing the first person view using room overlays
+	//
+	// FIXME: make camera offsets a persistent property?
+	import static void ConstructLocation(int x, int y, int w, int h,
+		WorldPosition *eye, int xcam, int ycam);
+	import static void ConstructCell(WorldPosition *eye,
+		int mapx, int mapy, int row, int col, int xcam, int ycam);
+	// TODO: apply protected modifier to some methods
+	import static void DisplayWallTile(int row, int col, CellViewTile tile, int xcam, int ycam);
+	import static void HideWallTile(int row, int col, CellViewTile tile);
+	import static void CreateWallSprite(int row, int col, CellViewTile tile);
+	import static void CreateWallTile(int row, int col, CellViewTile tile, int xcam, int ycam);
 };

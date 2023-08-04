@@ -7,8 +7,8 @@ struct WoodRotConstants {
 };
 
 struct WoodRotGame {
-	import static void DrawGrid(DrawingSurface *dest, int x, int y);
-	import static void DrawPlayerView(DrawingSurface *dest, int x, int y);
+	import static void DrawGrid(DrawingSurface *dest, int x, int y, int w, int h);
+	import static void DrawPlayerView(DrawingSurface *dest, int x, int y, int w, int h);
 	
 	import static bool TryWalk(WorldPosition *who, int dx, int dy);
 	import static WorldDirection Turn(WorldPosition *who, bool clockwise);
