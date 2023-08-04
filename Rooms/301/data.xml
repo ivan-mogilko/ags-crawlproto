@@ -25,7 +25,7 @@
     <Event Index="3" />
     <Event Index="4" />
     <Event Index="5">room_Load</Event>
-    <Event Index="6" />
+    <Event Index="6">room_RepExec</Event>
     <Event Index="7" />
     <Event Index="8" />
     <Event Index="9" />

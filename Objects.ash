@@ -11,4 +11,6 @@ enum WorldDirection {
 managed struct WorldPosition {
 	int X, Y;
 	WorldDirection Dir;
+	
+	import static WorldPosition *Create(int x, int y, WorldDirection dir);
 };

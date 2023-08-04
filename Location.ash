@@ -41,6 +41,12 @@ struct Location
 	import static Point *ObjectDeltaToMap(WorldPosition *who, Point *pt);
 	// Converts a relative offset from map to object's coordinates
 	import static Point *MapDeltaToObject(WorldPosition *who, Point *pt);
+	// Converts an absolute direction into the object's relative dir;
+	// in other words - where the dir is facing when looking from the "who" perspective.
+	// Here "forward" is North, "left" is West, "right" is East, "back" is South. 
+	import static WorldDirection MapToObjectDir(WorldPosition *who, WorldDirection dir);
+	//
+	import static Direction WorldDirToAGSLoop(WorldDirection dir);
 
 	// Returns position and directional axes of an object translated to map coordinate space.
 	//

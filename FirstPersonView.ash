@@ -77,19 +77,21 @@ struct CellViewSchema {
 	int RowCount; // number of near->far grid lines
 	int ColCount; // number of left->right grid lines
 
-	// TODO: need this??
 	// scale down factors for entities (items, objects and mobs)
-	//float BaseScale;  // scale factor at the starting cell
-	//float RowScaling; // scale factor, applied per each row of cells
-	//float ColScaling; // scale factor, applied per each column of cells
+	float BaseScale;  // scale factor at the starting cell
+	float RowScaling; // scale factor, applied per each row of cells
+	float ColScaling; // scale factor, applied per each column of cells
 
 	// These are vertex (grid) positions!!
 	CellViewStrip Strips[CELLVIEW_MAX_ROWS];
+	float CellScaling[CELLVIEW_MAX_ROWS - 1, CELLVIEW_MAX_COLS - 1];
 
 	// Setup basic schema properties
 	import void SetView(int width, int height, int row_count, int col_count);
 	// Generate x-uniform strip
 	import void SetUniformStrip(int row, int y1, int y2, int x_start, int u_width);
+	//
+	import void SetScaling(float base_scale, float row_scale, float col_scale);
 };
 
 // Current grid view schema setup
@@ -122,6 +124,10 @@ struct FirstPersonView {
 		WorldPosition *eye, int xcam, int ycam);
 	import static void ConstructCell(WorldPosition *eye,
 		int mapx, int mapy, int row, int col, int xcam, int ycam);
+	// Arranges the object (represented by overlay) in the first person view
+	import static void ConstructObject(WorldPosition *eye, WorldPosition *obj,
+		int view, int loop, int frame, Overlay *over, int xcam, int ycam);
+
 	// TODO: apply protected modifier to some methods
 	import static void DisplayWallTile(int row, int col, CellViewTile tile, int xcam, int ycam);
 	import static void HideWallTile(int row, int col, CellViewTile tile);
