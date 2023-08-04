@@ -9,15 +9,15 @@ struct WoodRotConstants {
 // Dummy AI test
 managed struct WoodRotAI {
 	DSM_StateRunner *Runner;
-	WorldPosition *Pos;
+	ObjectPosition *Pos;
 	Overlay *Over; // representation
 	
 	// Action states
-	WorldPosition *WalkTarget;
+	ObjectPosition *WalkTarget;
 	int SpeakTimer;
 	Overlay *OverSpeak;
 	
-	import static WoodRotAI *Create(DSM_StateList *list, WorldPosition *pos);
+	import static WoodRotAI *Create(DSM_StateList *list, ObjectPosition *pos);
 	import void Tick();
 	import void Action(String action);
 };
@@ -27,14 +27,14 @@ struct WoodRotGame {
 	import static void DrawPlayerView(DrawingSurface *dest, int x, int y, int w, int h);
 	
 	// fixme better names
-	import static bool TryWalkAbs(WorldPosition *who, int dx, int dy);
-	import static bool TryWalkLocal(WorldPosition *who, int dx, int dy);
-	import static WorldDirection Turn(WorldPosition *who, bool clockwise);
-	import static WorldDirection Face(WorldPosition *who, WorldDirection dir);
-	import static WorldDirection FaceDeltaPos(WorldPosition *who, int dx, int dy);
+	import static bool TryWalkAbs(ObjectPosition *who, int dx, int dy);
+	import static bool TryWalkLocal(ObjectPosition *who, int dx, int dy);
+	import static ObjectDirection Turn(ObjectPosition *who, bool clockwise);
+	import static ObjectDirection Face(ObjectPosition *who, ObjectDirection dir);
+	import static ObjectDirection FaceDeltaPos(ObjectPosition *who, int dx, int dy);
 	
 	import static void AddAI(WoodRotAI *ai);
 	import static void TickAI();
 };
 
-import WorldPosition *playerEye;
+import ObjectPosition *playerEye;

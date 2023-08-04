@@ -1,2 +1,9 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// String utilities module.
+//
+///////////////////////////////////////////////////////////////////////////////
 
+// Splits an input text into array of Strings using the given separator char.
+// Empty sections (where separators follow in a succession) are also counted.
 import String[] SplitText(String text, char separator);

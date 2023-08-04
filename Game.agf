@@ -2083,30 +2083,6 @@
           <ScriptAndHeader>
             <ScriptAndHeader_Header>
               <Script>
-                <FileName>Test.ash</FileName>
-                <Name />
-                <Description />
-                <Author />
-                <Version />
-                <Key>1925836942</Key>
-                <IsHeader>True</IsHeader>
-              </Script>
-            </ScriptAndHeader_Header>
-            <ScriptAndHeader_Script>
-              <Script>
-                <FileName>Test.asc</FileName>
-                <Name />
-                <Description />
-                <Author />
-                <Version />
-                <Key>1925836942</Key>
-                <IsHeader>False</IsHeader>
-              </Script>
-            </ScriptAndHeader_Script>
-          </ScriptAndHeader>
-          <ScriptAndHeader>
-            <ScriptAndHeader_Header>
-              <Script>
                 <FileName>Maths.ash</FileName>
                 <Name />
                 <Description />
@@ -2179,31 +2155,7 @@
           <ScriptAndHeader>
             <ScriptAndHeader_Header>
               <Script>
-                <FileName>Objects.ash</FileName>
-                <Name />
-                <Description />
-                <Author />
-                <Version />
-                <Key>1465938140</Key>
-                <IsHeader>True</IsHeader>
-              </Script>
-            </ScriptAndHeader_Header>
-            <ScriptAndHeader_Script>
-              <Script>
-                <FileName>Objects.asc</FileName>
-                <Name />
-                <Description />
-                <Author />
-                <Version />
-                <Key>1465938140</Key>
-                <IsHeader>False</IsHeader>
-              </Script>
-            </ScriptAndHeader_Script>
-          </ScriptAndHeader>
-          <ScriptAndHeader>
-            <ScriptAndHeader_Header>
-              <Script>
-                <FileName>Location.ash</FileName>
+                <FileName>Level.ash</FileName>
                 <Name />
                 <Description />
                 <Author />
@@ -2214,7 +2166,7 @@
             </ScriptAndHeader_Header>
             <ScriptAndHeader_Script>
               <Script>
-                <FileName>Location.asc</FileName>
+                <FileName>Level.asc</FileName>
                 <Name />
                 <Description />
                 <Author />

@@ -112,9 +112,9 @@ struct FirstPersonView {
 	// Draws a grid frame for testing purposes
 	import static void DrawGridFrame(DrawingSurface* ds, int cell_color, int wall_color);
 	// Draws current view as seen from the given pos into given direction
-	import static void DrawLocation(DrawingSurface *ds, WorldPosition *eye);
+	import static void DrawLocation(DrawingSurface *ds, ObjectPosition *eye);
 	// Draws particular map cell in viewport
-	import static void DrawCell(DrawingSurface *ds, WorldPosition *eye,
+	import static void DrawCell(DrawingSurface *ds, ObjectPosition *eye,
 		int mapx, int mapy, int row, int col);
 	
 	//
@@ -122,11 +122,11 @@ struct FirstPersonView {
 	//
 	// FIXME: make camera offsets a persistent property?
 	import static void ConstructLocation(int x, int y, int w, int h,
-		WorldPosition *eye, int xcam, int ycam);
-	import static void ConstructCell(WorldPosition *eye,
+		ObjectPosition *eye, int xcam, int ycam);
+	import static void ConstructCell(ObjectPosition *eye,
 		int mapx, int mapy, int row, int col, int xcam, int ycam);
 	// Arranges the object (represented by overlay) in the first person view
-	import static void ConstructObject(WorldPosition *eye, WorldPosition *obj,
+	import static void ConstructObject(ObjectPosition *eye, ObjectPosition *obj,
 		int view, int loop, int frame, Overlay *over, int xcam, int ycam);
 
 	// TODO: apply protected modifier to some methods
