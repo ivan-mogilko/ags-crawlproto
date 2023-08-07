@@ -1,5 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
+// The Level module.
+//
 // This module defines a game Level, that is a 2D map of cells, where player 
 // and NPCs may walk around and engage in a number of activities.
 //
@@ -84,10 +86,10 @@ enum ObjectDirection {
 	eDirEast		= 2, 
 	eDirSouth		= 3, 
 	eDirWest  		= 4, 
-	eDirForward 	= 1, 
-	eDirRight		= 2, 
-	eDirBackward	= 3, 
-	eDirLeft		= 4,
+	eDirForward 	= 1, // matches North
+	eDirRight		= 2, // matches East
+	eDirBackward	= 3, // matches South
+	eDirLeft		= 4, // matches West
 };
 
 // Position and direction of an object, in either absolute or
@@ -99,69 +101,78 @@ managed struct ObjectPosition {
 	import static ObjectPosition *Create(int x, int y, ObjectDirection dir);
 };
 
-// Helps to calculate absolute map pos of something
-// located relatively to the object;
-// see explanation for GetObjectToMapTransform below.
+// MapTransform helps to calculate absolute map position of something
+// located relatively to the object. Contains position (aka "origin" and
+// directional axes of an object in the map's coordinate space.
+//
+// Axes point into direction in which object's POV rows or columns increase
+// their index, respectively. Remember that rows go from "back" to "forth",
+// and  columns go from "left" to "right" in the object's local space.
+// For example, if viewRowAxisY = 1 this means that view row increases along
+// the map's Y coordinate (object "faces" into positive Y direction).
+// If viewRowAxisX = -1 this means that view row increases opposite to map's X
+// axis (object "faces" into negative X direction).
+//
+// These axes could be used to calculate actual map position of a cell relative
+// to this object; for example, if you want to find out map coordinates of cell
+// located one step forward, one step left from the object.
+// Assuming origin is object's absolute pos on map, relative cell position is
+// stored in variables cellCol and cellRow, then the conversion formula is:
+//
+//   mapX = origin.X + cellRow * viewRowAxis.X + cellCol * viewColAxis.X;
+//   mapY = origin.Y + cellRow * viewRowAxis.Y + cellCol * viewColAxis.Y;
+//
 managed struct MapTransform
 {
 	// Origin is object's absolute pos on map
 	int originX, originY;
-	//
+	// Tells which map direction the object's POV rows increase towards to.
 	int viewRowAxisX, viewRowAxisY;
+	// Tells which map direction the object's POV columns increase towards to.
 	int viewColAxisX, viewColAxisY;
 };
 
-// TODO: explain Map and Object coordinate spaces.
 
 //
-
+// Level struct contains the map data, and provides methods for working with
+// the map's and objects' coordinate spaces.
+// 
 struct Level
 {
+	//--------------------------------------------------------
 	// Map data
+	//--------------------------------------------------------
+	// Map size in cells
     int MapWidth;
     int MapHeight;
 	// Map layers, expandable
+	// each layer must be (MapWidth * MapHeight) size
 	//
 	// 8-bit passability mask;
 	//    0  = unrestricted, 
 	//    1+ = passable only if player has the same bits set
 	char CellPassable[];
 
-	// TODO: accept separate x, y as params for convenience
 	// Converts a position relative to the given object into the absolute map coordinates.
-    import static Point *ObjectToMap(ObjectPosition *who, Point *pt);
+    import static Point *ObjectToMap(ObjectPosition *who, int x, int y);
 	// Converts an absolute map position to a position relative to the given object.
-	import static Point *MapToObject(ObjectPosition *who, Point *pt);
+	import static Point *MapToObject(ObjectPosition *who, int x, int y);
 	// Converts a relative offset from object's to map coordinates
-	import static Point *ObjectDeltaToMap(ObjectPosition *who, Point *pt);
+	import static Point *ObjectDeltaToMap(ObjectPosition *who, int x, int y);
 	// Converts a relative offset from map to object's coordinates
-	import static Point *MapDeltaToObject(ObjectPosition *who, Point *pt);
+	import static Point *MapDeltaToObject(ObjectPosition *who, int x, int y);
 	// Converts an absolute direction into the object's relative dir;
 	// in other words - where the dir is facing when looking from the "who" perspective.
 	// Here "forward" is North, "left" is West, "right" is East, "back" is South. 
 	import static ObjectDirection MapToObjectDir(ObjectPosition *who, ObjectDirection dir);
-	//
-	import static Direction WorldDirToAGSLoop(ObjectDirection dir);
+	// Converts ObjectDirection into the AGS Direction, which also corresponds
+	// to the directional loop index.
+	import static Direction DirToAGSLoop(ObjectDirection dir);
 
 	// Returns position and directional axes of an object translated to map coordinate space.
-	//
-	// Axes point into direction in which view rows or columns increase their index.
-	// For instance, if viewRowAxisY = 1 this means that view row increases along with
-	// the map's Y coordinate (object looks towards positive Y direction).
-	// If viewRowAxisX = -1 this means that view row increases opposite to map's X
-	// coordinate (object looks towards negative X direction).
-	//
-	// These axes could be used to calculate actual map position of a cell relative
-	// to this object; for example, if you want to find out map coordinates of cell located
-	// one step forward, one step left from the object.
-	// Assuming origin is object's absolute pos on map, relative cell position is stored
-	// in variable cellPos, column is cellPos.Col and row is cellPos.Row,
-	// then the conversion formula is:
-	//
-	//   mapX = origin.X + cellPos.Row * viewRowAxis.X + cellPos.Col * viewColAxis.X;
-	//   mapY = origin.Y + cellPos.Row * viewRowAxis.Y + cellPos.Col * viewColAxis.Y;
-	//
+	// See comment to MapTransform struct for more information.
     import static MapTransform *GetObjectToMapTransform(ObjectPosition* who);
 };
 
+// Current level
 import Level CLevel;
