@@ -106,13 +106,16 @@ struct CellViewSchema {
 // Current grid view schema setup
 import CellViewSchema CV_Schema;
 
-// FIXME: make a FirstPersonView property
-#define FIRST_PERSON_HALF_WALLS (1)
-
 // FirstPersonView class draws a pseudo-3D first person view of a map as if visible
 // from the player's eyes.
 struct FirstPersonView {
-	
+	//
+	// Configuration
+	//
+	// Tells to draw walls half-height, helps testing level actors
+	import static void SetHalfWallMode(bool half_wall);
+
+	//
 	//
 	// Methods for drawing the first person view on a drawing surface
 	//
@@ -129,18 +132,18 @@ struct FirstPersonView {
 	//
 	// Methods for constructing the first person view using room overlays
 	//
-	// FIXME: make camera offsets a persistent property?
-	import static void ConstructLocation(int x, int y, int w, int h,
-		ObjectPosition *eye, int xcam, int ycam);
-	import static void ConstructCell(ObjectPosition *eye,
-		int mapx, int mapy, int row, int col, int xcam, int ycam);
+	// Sets camera offset to add when constructing a scene using overlays
+	import static void SetCameraOffset(int camx, int camy);
+	import static void ConstructLocation(ObjectPosition *eye);
+	import static void ConstructCell(ObjectPosition *eye, int mapx, int mapy, int row, int col);
 	// Arranges the object (represented by overlay) in the first person view
 	import static void ConstructObject(ObjectPosition *eye, ObjectPosition *obj,
-		int view, int loop, int frame, Overlay *over, int xcam, int ycam);
+		int view, int loop, int frame, Overlay *over);
 
-	import protected static void DisplayWallTile(int row, int col, CellViewTile tile, int xcam, int ycam);
+	import protected static void ResetTileCache();
+	import protected static void DisplayWallTile(int row, int col, CellViewTile tile);
 	import protected static void HideWallTile(int row, int col, CellViewTile tile);
 	import protected static void CreateWallSprite(int row, int col, CellViewTile tile);
-	import protected static void CreateWallTile(int row, int col, CellViewTile tile, int xcam, int ycam);
+	import protected static void CreateWallTile(int row, int col, CellViewTile tile);
 	import protected static int  CalcZorder(int row, int col, CellViewTile tile);
 };

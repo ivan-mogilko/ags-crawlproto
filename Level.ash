@@ -140,6 +140,15 @@ managed struct MapTransform
 struct Level
 {
 	//--------------------------------------------------------
+	// Resource data
+	// TODO: should store actual tilemaps.
+	//--------------------------------------------------------
+	// Two basic colors, used for anything not in tile array
+	int BasicColor1;
+	int BasicColor2;
+
+
+	//--------------------------------------------------------
 	// Map data
 	//--------------------------------------------------------
 	// Map size in cells
