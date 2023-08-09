@@ -73,7 +73,6 @@ struct CellViewStrip {
 	int X[CELLVIEW_MAX_VX_COLS];
 };
 
-
 struct CellViewSchema {
 	writeprotected int Width;    // viewport width
 	writeprotected int Height;   // viewport height
@@ -132,6 +131,8 @@ struct FirstPersonView {
 	//
 	// Methods for constructing the first person view using room overlays
 	//
+	// Generates required assets for the current level
+	import static void GenerateAssetsForLevel();
 	// Sets camera offset to add when constructing a scene using overlays
 	import static void SetCameraOffset(int camx, int camy);
 	import static void ConstructLocation(ObjectPosition *eye);
@@ -141,9 +142,10 @@ struct FirstPersonView {
 		int view, int loop, int frame, Overlay *over);
 
 	import protected static void ResetTileCache();
-	import protected static void DisplayWallTile(int row, int col, CellViewTile tile);
+	import protected static void DisplayWallTile(int row, int col, CellViewTile tile, int tex_id = -1);
 	import protected static void HideWallTile(int row, int col, CellViewTile tile);
-	import protected static void CreateWallSprite(int row, int col, CellViewTile tile);
+	import protected static DynamicSprite *CreateWallSprite(int row, int col,
+		CellViewTile tile, int tex_id);
 	import protected static void CreateWallTile(int row, int col, CellViewTile tile);
 	import protected static int  CalcZorder(int row, int col, CellViewTile tile);
 };

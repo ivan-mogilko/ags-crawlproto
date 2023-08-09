@@ -132,6 +132,17 @@ managed struct MapTransform
 	int viewColAxisX, viewColAxisY;
 };
 
+// FIXME: this is ugly, figure out how to share this with CellView... :/
+// TODO: separate constants for left and right side walls, 
+// may be necessary if we support "fences" between passable cells
+enum TextureType {
+	eTxType_Floor, 
+	eTxType_Ceil, 
+	eTxType_Front, 
+	eTxType_Side, // side wall (left or right, depending on cell pos)
+	eTxTypeNum
+};
+
 
 //
 // Level struct contains the map data, and provides methods for working with
@@ -141,11 +152,11 @@ struct Level
 {
 	//--------------------------------------------------------
 	// Resource data
-	// TODO: should store actual tilemaps.
+	// TODO: should store actual tilemaps for textures.
 	//--------------------------------------------------------
 	// Two basic colors, used for anything not in tile array
-	int BasicColor1;
-	int BasicColor2;
+	int BasicColor1[eTxTypeNum];
+	int BasicColor2[eTxTypeNum];
 
 
 	//--------------------------------------------------------
