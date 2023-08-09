@@ -157,10 +157,14 @@ struct Level
 	// Two basic colors, used for anything not in tile array
 	int BasicColor1[eTxTypeNum];
 	int BasicColor2[eTxTypeNum];
+	// Pair of AGS colors per texture index
+	int TexColor1[];
+	int TexColor2[];
 
 
 	//--------------------------------------------------------
 	// Map data
+	// FIXME: make most of this writeprotected?
 	//--------------------------------------------------------
 	// Map size in cells
     int MapWidth;
@@ -172,6 +176,9 @@ struct Level
 	//    0  = unrestricted, 
 	//    1+ = passable only if player has the same bits set
 	char CellPassable[];
+	// Floor and ceiling tile
+	int  FloorTile[];
+	int  CeilTile[];
 
 	// Converts a position relative to the given object into the absolute map coordinates.
     import static Point *ObjectToMap(ObjectPosition *who, int x, int y);
