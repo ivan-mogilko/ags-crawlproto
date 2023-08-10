@@ -49,10 +49,11 @@
 //
 
 // Cell rows and columns limits
-#define CELLVIEW_MAX_CELL_ROWS      (5)
+#define CELLVIEW_MAX_CELL_ROWS      (6)
 #define CELLVIEW_MAX_CELL_COLS      (11)
 #define CELLVIEW_MAX_CELL_SPACE     (CELLVIEW_MAX_ROWS * CELLVIEW_MAX_COLS)
-// Cell vertixes limits
+// Cell vertices limits
+// Strips of vertices always have +1 element more than cells
 #define CELLVIEW_MAX_VX_ROWS        (CELLVIEW_MAX_CELL_ROWS + 1)
 #define CELLVIEW_MAX_VX_COLS        (CELLVIEW_MAX_CELL_COLS + 1)
 
@@ -69,6 +70,7 @@ enum CellViewTile {
 
 // Vertex positions!!
 struct CellViewStrip {
+	bool Valid;
 	int Y1, Y2;
 	int X[CELLVIEW_MAX_VX_COLS];
 };
@@ -94,7 +96,7 @@ struct CellViewSchema {
 	// Setup basic schema properties
 	import void SetView(int width, int height, int row_count, int col_count);
 	// Generate x-uniform strip
-	import void SetUniformStrip(int row, int y1, int y2, int x_start, int u_width);
+	import void SetUniformStrip(int vx_row, int y1, int y2, int x_start, int u_width);
 	//
 	import void SetScaling(float base_scale, float row_scale, float col_scale);
 	// Converts a relative position in object's local space to the
