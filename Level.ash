@@ -144,8 +144,9 @@ enum TextureType {
 };
 
 enum TextureSequenceType {
-	eTxSeq_Normal, 
-	eTxSeq_Random
+	eTxSeq_Fixed, // stay, can be changed by command
+	eTxSeq_Normal, // change one by one in time
+	eTxSeq_Random // change at random in time
 };
 
 managed struct TextureSequence {
