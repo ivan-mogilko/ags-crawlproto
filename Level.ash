@@ -143,6 +143,25 @@ enum TextureType {
 	eTxTypeNum
 };
 
+enum TextureSequenceType {
+	eTxSeq_Normal, 
+	eTxSeq_Random
+};
+
+managed struct TextureSequence {
+	TextureSequenceType Type;
+	int TexColor1[];
+	int TexColor2[];
+	int FrameTime;
+	int Timer;
+};
+
+managed struct CellTile {
+	int FloorTile;
+	int FloorFrame;
+	int CeilTile;
+	int CeilFrame;
+};
 
 //
 // Level struct contains the map data, and provides methods for working with
@@ -160,6 +179,8 @@ struct Level
 	// Pair of AGS colors per texture index
 	int TexColor1[];
 	int TexColor2[];
+	// Texture sequence per texture index
+	TextureSequence TexSeq[];
 
 
 	//--------------------------------------------------------
@@ -176,9 +197,8 @@ struct Level
 	//    0  = unrestricted, 
 	//    1+ = passable only if player has the same bits set
 	char CellPassable[];
-	// Floor and ceiling tile
-	int  FloorTile[];
-	int  CeilTile[];
+	// Cell tiles (textures) definition
+	CellTile CellTiles[];
 
 	// Converts a position relative to the given object into the absolute map coordinates.
     import static Point *ObjectToMap(ObjectPosition *who, int x, int y);
@@ -199,6 +219,8 @@ struct Level
 	// Returns position and directional axes of an object translated to map coordinate space.
 	// See comment to MapTransform struct for more information.
     import static MapTransform *GetObjectToMapTransform(ObjectPosition* who);
+	
+	import static void Tick();
 };
 
 // Current level
