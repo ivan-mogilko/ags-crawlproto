@@ -5,3 +5,5 @@
 /room*.crm
 /_Debug/*
 /backup_acsprset.spr
+/acsprset.spr
+/sprindex.dat
