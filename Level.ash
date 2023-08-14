@@ -189,7 +189,7 @@ managed struct CellObjectDefinition {
 };
 
 // Cell Object placed in the level
-managed struct CellObject {
+managed struct CellObject extends ArrayElement {
 	CellObjectDefinition Def;
 	ObjectPosition Pos;
 	Overlay *Over; // representation

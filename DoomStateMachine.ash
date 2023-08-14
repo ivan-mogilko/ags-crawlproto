@@ -24,7 +24,7 @@ managed struct DSM_Frame {
 	int Delay;
 };
 
-managed struct DSM_StateStep {
+managed struct DSM_StateStep extends ArrayElement {
 	int Loop;
 	DSM_Frame Frames[];
 	int Delay;
@@ -33,7 +33,7 @@ managed struct DSM_StateStep {
 	String Args;
 };
 
-managed struct DSM_State {
+managed struct DSM_State extends ArrayElement {
 	String Name;
 	DSM_StateStep Steps[];
 

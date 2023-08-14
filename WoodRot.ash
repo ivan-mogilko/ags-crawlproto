@@ -9,7 +9,7 @@ struct WoodRotConstants {
 // Dummy AI test
 // TODO: pick out a shared parent struct to use for all level objects, 
 // that have position, animation, etc.
-managed struct WoodRotAI {
+managed struct WoodRotAI extends ArrayElement {
 	DSM_StateRunner *Runner;
 	ObjectPosition *Pos;
 	Overlay *Over; // representation
