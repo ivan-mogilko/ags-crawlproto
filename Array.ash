@@ -34,6 +34,9 @@ import int Array_SafeLength(ArrayElement *arr[]);
 // returns resulting index on success, and -1 on failure;
 // handles null array case.
 import bool Array_TryAdd(ArrayElement *arr[], ArrayElement *elem);
+// Search for an element and remove it, if found;
+// returns resulting index on success, and -1 on failure;
+import int Array_TryRemove(ArrayElement *arr[], ArrayElement *elem);
 // Copies count src elements to dest array;
 // requires that both dest and src are not null, and count is valid.
 import void Array_Copy(ArrayElement *dest[], ArrayElement *src[], int count);

@@ -141,7 +141,7 @@ struct FirstPersonView {
 	import static void ConstructCell(ObjectPosition *eye, int mapx, int mapy, int row, int col);
 	// Arranges the object (represented by overlay) in the first person view
 	import static void ConstructObject(ObjectPosition *eye, ObjectPosition *obj,
-		int view, int loop, int frame, Overlay *over);
+		int view, int loop, int frame, bool directional, Overlay *over);
 
 	import protected static void ResetTileCache();
 	import protected static void DisplayWallTile(int row, int col, CellViewTile tile,

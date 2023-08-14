@@ -186,6 +186,7 @@ managed struct CellCommand {
 managed struct CellObjectDefinition {
 	String Name;
 	int View, Loop; // View and Loop, for a simple continuous animation
+	bool AnimateOnceAndRemove; // FIXME: make behavior flags
 };
 
 // Cell Object placed in the level
@@ -221,6 +222,7 @@ struct Level
 	// Cell object types description, to be used in this level
 	// TODO: actually, may move this to some kind of a "game manager"
 	CellObjectDefinition CellObjectTypes[];
+	CellObjectDefinition TeleportFx; // teleport fx type
 
 	//--------------------------------------------------------
 	// Map data
@@ -266,6 +268,9 @@ struct Level
     import static MapTransform *GetObjectToMapTransform(ObjectPosition* who);
 
 	import static void AddCellObject(CellObject *obj);
+	import static CellObject AddCellObject2(CellObjectDefinition *def, int x, int y, ObjectDirection dir);
+	import static void RemoveCellObject(CellObject *obj);
+	import static void RemoveCellObject2(int index);
 	import static void Tick();
 	
 	import static void Trigger(ObjectPosition *who, int from_x, int from_y, CommandTrigger trigger);
