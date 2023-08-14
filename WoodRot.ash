@@ -7,6 +7,8 @@ struct WoodRotConstants {
 };
 
 // Dummy AI test
+// TODO: pick out a shared parent struct to use for all level objects, 
+// that have position, animation, etc.
 managed struct WoodRotAI {
 	DSM_StateRunner *Runner;
 	ObjectPosition *Pos;
@@ -22,6 +24,7 @@ managed struct WoodRotAI {
 	import void Action(String action);
 };
 
+// TODO: split out a more generic Game struct with common functions
 struct WoodRotGame {
 	import static void DrawGrid(DrawingSurface *dest, int x, int y, int w, int h);
 	import static void DrawPlayerView(DrawingSurface *dest, int x, int y, int w, int h);

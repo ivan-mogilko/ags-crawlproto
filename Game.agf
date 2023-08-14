@@ -1750,6 +1750,71 @@
                   </Sprite>
                 </Sprites>
               </SpriteFolder>
+              <SpriteFolder Name="CellFx">
+                <SubFolders />
+                <Sprites>
+                  <Sprite Slot="29" Width="25" Height="50" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+                    <Source>
+                      <FileName>Sprites/Crawler/CellFx/teleport01.png</FileName>
+                      <OffsetX>0</OffsetX>
+                      <OffsetY>0</OffsetY>
+                      <ImportHeight>50</ImportHeight>
+                      <ImportWidth>25</ImportWidth>
+                      <ImportAsTile>False</ImportAsTile>
+                      <Frame>0</Frame>
+                      <RemapToGamePalette>False</RemapToGamePalette>
+                      <RemapToRoomPalette>False</RemapToRoomPalette>
+                      <ImportMethod>LeaveAsIs</ImportMethod>
+                      <ImportAlphaChannel>True</ImportAlphaChannel>
+                    </Source>
+                  </Sprite>
+                  <Sprite Slot="30" Width="25" Height="50" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+                    <Source>
+                      <FileName>Sprites/Crawler/CellFx/teleport02.png</FileName>
+                      <OffsetX>0</OffsetX>
+                      <OffsetY>0</OffsetY>
+                      <ImportHeight>50</ImportHeight>
+                      <ImportWidth>25</ImportWidth>
+                      <ImportAsTile>False</ImportAsTile>
+                      <Frame>0</Frame>
+                      <RemapToGamePalette>False</RemapToGamePalette>
+                      <RemapToRoomPalette>False</RemapToRoomPalette>
+                      <ImportMethod>LeaveAsIs</ImportMethod>
+                      <ImportAlphaChannel>True</ImportAlphaChannel>
+                    </Source>
+                  </Sprite>
+                  <Sprite Slot="31" Width="25" Height="50" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+                    <Source>
+                      <FileName>Sprites/Crawler/CellFx/teleport03.png</FileName>
+                      <OffsetX>0</OffsetX>
+                      <OffsetY>0</OffsetY>
+                      <ImportHeight>50</ImportHeight>
+                      <ImportWidth>25</ImportWidth>
+                      <ImportAsTile>False</ImportAsTile>
+                      <Frame>0</Frame>
+                      <RemapToGamePalette>False</RemapToGamePalette>
+                      <RemapToRoomPalette>False</RemapToRoomPalette>
+                      <ImportMethod>LeaveAsIs</ImportMethod>
+                      <ImportAlphaChannel>True</ImportAlphaChannel>
+                    </Source>
+                  </Sprite>
+                  <Sprite Slot="32" Width="25" Height="50" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+                    <Source>
+                      <FileName>Sprites/Crawler/CellFx/teleport04.png</FileName>
+                      <OffsetX>0</OffsetX>
+                      <OffsetY>0</OffsetY>
+                      <ImportHeight>50</ImportHeight>
+                      <ImportWidth>25</ImportWidth>
+                      <ImportAsTile>False</ImportAsTile>
+                      <Frame>0</Frame>
+                      <RemapToGamePalette>False</RemapToGamePalette>
+                      <RemapToRoomPalette>False</RemapToRoomPalette>
+                      <ImportMethod>LeaveAsIs</ImportMethod>
+                      <ImportAlphaChannel>True</ImportAlphaChannel>
+                    </Source>
+                  </Sprite>
+                </Sprites>
+              </SpriteFolder>
             </SubFolders>
             <Sprites />
           </SpriteFolder>
@@ -2009,6 +2074,153 @@
                   </View>
                 </Views>
               </ViewFolder>
+              <ViewFolder Name="CellFx">
+                <SubFolders />
+                <Views>
+                  <View>
+                    <ID>3</ID>
+                    <Name>VCELLTELEPORT</Name>
+                    <Loops>
+                      <Loop>
+                        <ID>0</ID>
+                        <RunNextLoop>False</RunNextLoop>
+                        <Frames>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>0</ID>
+                            <Image>29</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>1</ID>
+                            <Image>30</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>2</ID>
+                            <Image>31</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>3</ID>
+                            <Image>32</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                        </Frames>
+                      </Loop>
+                      <Loop>
+                        <ID>1</ID>
+                        <RunNextLoop>False</RunNextLoop>
+                        <Frames>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>0</ID>
+                            <Image>29</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>1</ID>
+                            <Image>30</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>2</ID>
+                            <Image>31</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>3</ID>
+                            <Image>32</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                        </Frames>
+                      </Loop>
+                      <Loop>
+                        <ID>2</ID>
+                        <RunNextLoop>False</RunNextLoop>
+                        <Frames>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>0</ID>
+                            <Image>29</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>1</ID>
+                            <Image>30</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>2</ID>
+                            <Image>31</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>3</ID>
+                            <Image>32</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                        </Frames>
+                      </Loop>
+                      <Loop>
+                        <ID>3</ID>
+                        <RunNextLoop>False</RunNextLoop>
+                        <Frames>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>0</ID>
+                            <Image>29</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>1</ID>
+                            <Image>30</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>2</ID>
+                            <Image>31</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                          <ViewFrame>
+                            <Delay>8</Delay>
+                            <Flipped>False</Flipped>
+                            <ID>3</ID>
+                            <Image>32</Image>
+                            <Sound>0</Sound>
+                          </ViewFrame>
+                        </Frames>
+                      </Loop>
+                    </Loops>
+                  </View>
+                </Views>
+              </ViewFolder>
             </SubFolders>
             <Views />
           </ViewFolder>
@@ -2148,6 +2360,30 @@
                 <Author />
                 <Version />
                 <Key>1505270956</Key>
+                <IsHeader>False</IsHeader>
+              </Script>
+            </ScriptAndHeader_Script>
+          </ScriptAndHeader>
+          <ScriptAndHeader>
+            <ScriptAndHeader_Header>
+              <Script>
+                <FileName>Commands.ash</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>1953308925</Key>
+                <IsHeader>True</IsHeader>
+              </Script>
+            </ScriptAndHeader_Header>
+            <ScriptAndHeader_Script>
+              <Script>
+                <FileName>Commands.asc</FileName>
+                <Name />
+                <Description />
+                <Author />
+                <Version />
+                <Key>1953308925</Key>
                 <IsHeader>False</IsHeader>
               </Script>
             </ScriptAndHeader_Script>

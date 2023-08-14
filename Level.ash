@@ -164,6 +164,41 @@ managed struct CellTile {
 	int CeilFrame;
 };
 
+enum CommandTrigger {
+	eCmdTrigger_Enter, // enter cell or pass wall
+};
+
+// Command describes a game command with arguments.
+// This is a way to schedule a sequence of actions, triggered upon
+// certain event.
+struct Command {
+	GameCommand Type;
+	int Args[5];
+	String SArg;
+};
+
+managed struct CellCommand {
+	CommandTrigger Trigger; // trigger type
+	Command Cmd;
+};
+
+// Description of the Cell Object type
+managed struct CellObjectDefinition {
+	String Name;
+	int View, Loop; // View and Loop, for a simple continuous animation
+};
+
+// Cell Object placed in the level
+managed struct CellObject {
+	CellObjectDefinition Def;
+	ObjectPosition Pos;
+	Overlay *Over; // representation
+	int View, Loop, Frame; // current animation params
+	int Timer; // animation timer
+	
+	import static CellObject *Create(CellObjectDefinition def, int x, int y, ObjectDirection dir);
+};
+
 //
 // Level struct contains the map data, and provides methods for working with
 // the map's and objects' coordinate spaces.
@@ -183,6 +218,9 @@ struct Level
 	// Texture sequence per texture index
 	TextureSequence TexSeq[];
 
+	// Cell object types description, to be used in this level
+	// TODO: actually, may move this to some kind of a "game manager"
+	CellObjectDefinition CellObjectTypes[];
 
 	//--------------------------------------------------------
 	// Map data
@@ -200,6 +238,12 @@ struct Level
 	char CellPassable[];
 	// Cell tiles (textures) definition
 	CellTile CellTiles[];
+	// Command triggered by each cell
+	CellCommand CellTriggers[];
+
+	// Separate level objects, not directly bound to the number of tiles
+	// Cell objects
+	CellObject CellObjects[];
 
 	// Converts a position relative to the given object into the absolute map coordinates.
     import static Point *ObjectToMap(ObjectPosition *who, int x, int y);
@@ -220,8 +264,13 @@ struct Level
 	// Returns position and directional axes of an object translated to map coordinate space.
 	// See comment to MapTransform struct for more information.
     import static MapTransform *GetObjectToMapTransform(ObjectPosition* who);
-	
+
+	import static void AddCellObject(CellObject *obj);
 	import static void Tick();
+	
+	import static void Trigger(ObjectPosition *who, int from_x, int from_y, CommandTrigger trigger);
+	import static void RunCommand(ObjectPosition *who, GameCommand type,
+		int arg1, int arg2, int arg3, int arg4, int arg5, String sarg);
 };
 
 // Current level
