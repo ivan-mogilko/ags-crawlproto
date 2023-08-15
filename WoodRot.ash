@@ -11,13 +11,10 @@ struct WoodRotConstants {
 // that have position, animation, etc.
 managed struct WoodRotAI extends ArrayElement {
 	DSM_StateRunner *Runner;
-	ObjectPosition *Pos;
-	Overlay *Over; // representation
+	LevelObject *LObject; // representation on the level
 	
 	// Action states
 	ObjectPosition *WalkTarget;
-	int SpeakTimer;
-	Overlay *OverSpeak;
 	
 	import static WoodRotAI *Create(DSM_StateList *list, ObjectPosition *pos);
 	import void Tick();

@@ -182,22 +182,26 @@ managed struct CellCommand {
 	Command Cmd;
 };
 
-// Description of the Cell Object type
-managed struct CellObjectDefinition {
+// Description of the LevelObject type, 
+// defines its constant or default properties and behavior.
+managed struct LevelObjectClass {
 	String Name;
 	int View, Loop; // View and Loop, for a simple continuous animation
-	bool AnimateOnceAndRemove; // FIXME: make behavior flags
+	// FIXME: make behavior flags
+	bool Directional; // use different loops for 4 facing directions
+	bool AnimateOnceAndRemove;
 };
 
-// Cell Object placed in the level
-managed struct CellObject extends ArrayElement {
-	CellObjectDefinition Def;
+// LevelObject describes a dynamic state of a level object
+managed struct LevelObject extends ArrayElement {
+	LevelObjectClass Def;
 	ObjectPosition Pos;
-	Overlay *Over; // representation
+	Overlay *Over; // graphical representation
 	int View, Loop, Frame; // current animation params
 	int Timer; // animation timer
 	
-	import static CellObject *Create(CellObjectDefinition def, int x, int y, ObjectDirection dir);
+	import static LevelObject *Create(LevelObjectClass def, int x, int y, ObjectDirection dir);
+	import static LevelObject *Create2(LevelObjectClass def, ObjectPosition pos);
 };
 
 //
@@ -221,8 +225,8 @@ struct Level
 
 	// Cell object types description, to be used in this level
 	// TODO: actually, may move this to some kind of a "game manager"
-	CellObjectDefinition CellObjectTypes[];
-	CellObjectDefinition TeleportFx; // teleport fx type
+	LevelObjectClass LevelObjectTypes[];
+	LevelObjectClass TeleportFx; // teleport fx type
 
 	//--------------------------------------------------------
 	// Map data
@@ -244,8 +248,7 @@ struct Level
 	CellCommand CellTriggers[];
 
 	// Separate level objects, not directly bound to the number of tiles
-	// Cell objects
-	CellObject CellObjects[];
+	LevelObject LevelObjects[];
 
 	// Converts a position relative to the given object into the absolute map coordinates.
     import static Point *ObjectToMap(ObjectPosition *who, int x, int y);
@@ -267,10 +270,10 @@ struct Level
 	// See comment to MapTransform struct for more information.
     import static MapTransform *GetObjectToMapTransform(ObjectPosition* who);
 
-	import static void AddCellObject(CellObject *obj);
-	import static CellObject AddCellObject2(CellObjectDefinition *def, int x, int y, ObjectDirection dir);
-	import static void RemoveCellObject(CellObject *obj);
-	import static void RemoveCellObject2(int index);
+	import static void AddObject(LevelObject *obj);
+	import static LevelObject AddObject2(LevelObjectClass *def, int x, int y, ObjectDirection dir);
+	import static void RemoveObject(LevelObject *obj);
+	import static void RemoveObject2(int index);
 	import static void Tick();
 	
 	import static void Trigger(ObjectPosition *who, int from_x, int from_y, CommandTrigger trigger);
