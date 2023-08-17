@@ -140,6 +140,7 @@ enum TextureType {
 	eTxType_Ceil, 
 	eTxType_Front, 
 	eTxType_Side, // side wall (left or right, depending on cell pos)
+	eTxType_Base, // whole cell object (an image taking whole cell in view)
 	eTxTypeNum
 };
 
@@ -150,11 +151,34 @@ enum TextureSequenceType {
 };
 
 managed struct TextureSequence {
+	// TODO: sprites
 	TextureSequenceType Type;
-	int TexColor1[];
-	int TexColor2[];
+	int Color1[];
+	int Color2[];
 	int FrameTime;
 	int Timer;
+};
+
+// A description of the Tile's Type.
+// Contains all possible things: colors for generating colored "textures", 
+// sprites, views, animated sequences, and so on.
+// Priority, when drawing a cell:
+// - sequence
+// - sprite
+// - if nothing else, then use colors, if applicable
+managed struct TileDefinition {
+	// TODO: sprites (views?)
+	// Simple colors
+	int Color1[eTxTypeNum];
+	int Color2[eTxTypeNum];
+	// Sprites
+	int Sprite[eTxTypeNum];
+	// Sequences
+	TextureSequence Seq[eTxTypeNum];
+	// FIXME: make behavior flags
+	bool Directional; // use different loops for 4 facing directions
+	bool Perspective; // has variants depending on position in player's View
+	bool Scaled; // auto-scaled in the player's View
 };
 
 managed struct CellTile {
@@ -216,11 +240,8 @@ struct Level
 	// Resource data
 	// TODO: should store actual tilemaps for textures.
 	//--------------------------------------------------------
-	// Pair of AGS colors per texture index
-	int TexColor1[];
-	int TexColor2[];
-	// Texture sequence per texture index
-	TextureSequence TexSeq[];
+	// Tile definitions, used by the CellTiles
+	TileDefinition TileDefs[];
 
 	// Cell object types description, to be used in this level
 	// TODO: actually, may move this to some kind of a "game manager"

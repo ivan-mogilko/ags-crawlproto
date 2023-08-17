@@ -145,10 +145,10 @@ struct FirstPersonView {
 
 	import protected static void ResetTileCache();
 	import protected static void DisplayWallTile(int row, int col, CellViewTile tile,
-		int tex_id = -1, int frame_index = -1);
+		int tex_id , int frame_index = -1);
 	import protected static void HideWallTile(int row, int col, CellViewTile tile);
 	import protected static DynamicSprite *CreateWallSprite(int row, int col,
-		CellViewTile tile, int tex_id = -1, int frame_index = -1);
+		CellViewTile tile, int tex_id, int frame_index = -1);
 	import protected static void CreateWallTile(int row, int col, CellViewTile tile);
 	import protected static int  CalcZorder(int row, int col, CellViewTile tile);
 };
