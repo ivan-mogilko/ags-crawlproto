@@ -136,12 +136,27 @@ managed struct MapTransform
 // TODO: separate constants for left and right side walls, 
 // may be necessary if we support "fences" between passable cells
 enum TextureType {
-	eTxType_Floor, 
+	eTxType_Floor = 0, 
 	eTxType_Ceil, 
 	eTxType_Front, 
 	eTxType_Side, // side wall (left or right, depending on cell pos)
 	eTxType_Base, // whole cell object (an image taking whole cell in view)
 	eTxTypeNum
+};
+
+// Helper enum for combining texture types as bit flags;
+// for instance, if you need to tell which types are supported for a tile.
+// NOTE: it's possible to convert from TextureType using bitwise shift like:
+//     flag = (1 << type)
+enum TextureTypeFlag {
+	eTxTypeFlag_Floor = 0x01, 
+	eTxTypeFlag_Ceil  = 0x02, 
+	eTxTypeFlag_Front = 0x04, 
+	eTxTypeFlag_Side  = 0x08, 
+	eTxTypeFlag_Base  = 0x10, 
+	eTxTypeFlag_WallMask = (eTxTypeFlag_Front | eTxTypeFlag_Side), 
+	eTxTypeFlag_WallOrBaseMask = (eTxTypeFlag_WallMask | eTxTypeFlag_Base), 
+	eTxTypeFlag_FlatMask = (eTxTypeFlag_Floor | eTxTypeFlag_Ceil)
 };
 
 enum TextureSequenceType {
@@ -167,6 +182,7 @@ managed struct TextureSequence {
 // - sprite
 // - if nothing else, then use colors, if applicable
 managed struct TileDefinition {
+	TextureTypeFlag HasTextures;
 	// TODO: sprites (views?)
 	// Simple colors
 	int Color1[eTxTypeNum];
@@ -181,13 +197,17 @@ managed struct TileDefinition {
 	bool Scaled; // auto-scaled in the player's View
 };
 
+// Dynamic tile data
+struct TileData {
+	int DefID; // id of a tile definition
+	int Frame; // current frame of a sequence (if applicable)
+	ObjectDirection Dir; // current tile direction (if applicable)
+};
+
 managed struct CellTile {
-	int FloorTile;
-	int FloorFrame;
-	int CeilTile;
-	int CeilFrame;
-	int BaseTile;
-	int BaseFrame;
+	TileData Floor;
+	TileData Ceil;
+	TileData Base; // big tile for the whole cell
 };
 
 enum CommandTrigger {

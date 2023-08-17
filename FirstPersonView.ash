@@ -60,10 +60,11 @@
 // TODO: separate constants for left and right side walls, 
 // may be necessary if we support "fences" between passable cells
 enum CellViewTile {
-	eCVTile_Floor, 
+	eCVTile_Floor = 0, 
 	eCVTile_Ceil, 
 	eCVTile_Front, 
 	eCVTile_Side,    // side wall (left or right, depending on cell pos)
+	eCVTile_Base,    // cell-object, occupying whole cell
 	eCVTile_Object,  // placeholder for "any object in cell"
 	eCVTileNum
 };
