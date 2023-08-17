@@ -92,14 +92,21 @@ struct CellViewSchema {
 
 	// These are vertex (grid) positions!!
 	writeprotected CellViewStrip Strips[CELLVIEW_MAX_VX_ROWS];
+	// Scaling factors per cell
 	writeprotected float CellScaling[CELLVIEW_MAX_CELL_ROWS, CELLVIEW_MAX_CELL_COLS];
+	// Cell's geometric centers, for easier aligning of objects
+	writeprotected int CellCenterX[CELLVIEW_MAX_CELL_ROWS, CELLVIEW_MAX_CELL_COLS];
+	writeprotected int CellCenterY[CELLVIEW_MAX_CELL_ROWS, CELLVIEW_MAX_CELL_COLS];
 
 	// Setup basic schema properties
 	import void SetView(int width, int height, int row_count, int col_count);
 	// Generate x-uniform strip
 	import void SetUniformStrip(int vx_row, int y1, int y2, int x_start, int u_width);
-	//
+	// Generate scaling factors for each cell
 	import void SetScaling(float base_scale, float row_scale, float col_scale);
+	// Generate any remaining data, this should be called last after configuring other things.
+	import void Finalize();
+
 	// Converts a relative position in object's local space to the
 	// cell view's row/cell pair
 	import Point *ObjectToCellView(int objx, int objy);

@@ -195,6 +195,7 @@ managed struct TileDefinition {
 	bool Directional; // use different loops for 4 facing directions
 	bool Perspective; // has variants depending on position in player's View
 	bool Scaled; // auto-scaled in the player's View
+	int  OriginY;
 };
 
 // Dynamic tile data
