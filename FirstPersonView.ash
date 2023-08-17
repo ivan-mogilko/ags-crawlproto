@@ -119,17 +119,12 @@ struct FirstPersonView {
 
 	//
 	//
-	// Methods for drawing the first person view on a drawing surface
+	// Methods for drawing the helper grid on a surface
 	//
 	// Draws a rectangle around viewport
 	import static void DrawViewport(DrawingSurface* ds, int color);
 	// Draws a grid frame for testing purposes
 	import static void DrawGridFrame(DrawingSurface* ds, int cell_color, int wall_color);
-	// Draws current view as seen from the given pos into given direction
-	import static void DrawLocation(DrawingSurface *ds, ObjectPosition *eye);
-	// Draws particular map cell in viewport
-	import static void DrawCell(DrawingSurface *ds, ObjectPosition *eye,
-		int mapx, int mapy, int row, int col);
 
 	//
 	// Methods for constructing the first person view using room overlays
