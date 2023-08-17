@@ -162,6 +162,8 @@ managed struct CellTile {
 	int FloorFrame;
 	int CeilTile;
 	int CeilFrame;
+	int BaseTile;
+	int BaseFrame;
 };
 
 enum CommandTrigger {
@@ -214,9 +216,6 @@ struct Level
 	// Resource data
 	// TODO: should store actual tilemaps for textures.
 	//--------------------------------------------------------
-	// Two basic colors, used for anything not in tile array
-	int BasicColor1[eTxTypeNum];
-	int BasicColor2[eTxTypeNum];
 	// Pair of AGS colors per texture index
 	int TexColor1[];
 	int TexColor2[];
@@ -242,7 +241,7 @@ struct Level
 	//    0  = unrestricted, 
 	//    1+ = passable only if player has the same bits set
 	char CellPassable[];
-	// Cell tiles (textures) definition
+	// Cell tiles data
 	CellTile CellTiles[];
 	// Command triggered by each cell
 	CellCommand CellTriggers[];
