@@ -102,6 +102,7 @@ struct CellViewSchema {
 	import void SetView(int width, int height, int row_count, int col_count);
 	// Generate x-uniform strip
 	import void SetUniformStrip(int vx_row, int y1, int y2, int x_start, int u_width);
+	import void SetStrip(int vx_row, int y1, int y2, int x[]);
 	// Generate scaling factors for each cell
 	import void SetScaling(float base_scale, float row_scale, float col_scale);
 	// Generate any remaining data, this should be called last after configuring other things.
