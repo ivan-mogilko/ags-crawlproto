@@ -5,4 +5,4 @@ Work in progress in a draft state, with no far goals, currently is being created
 
 Little art is used, most of the level gfx at the moment is generated using colored triangles (quads).
 
-For this moment the project's script is distributed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) (free for anything, except for commercial purposes). I may consider changing this to something suitable later, depending on how (and if) this progresses.
+The project's script is distributed under [MIT License](LICENSE.md).
