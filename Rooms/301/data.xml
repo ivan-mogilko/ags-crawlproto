@@ -15,7 +15,7 @@
   <Properties />
   <RightEdgeX>319</RightEdgeX>
   <SaveLoadEnabled>True</SaveLoadEnabled>
-  <ShowPlayerCharacter>True</ShowPlayerCharacter>
+  <ShowPlayerCharacter>False</ShowPlayerCharacter>
   <TopEdgeY>0</TopEdgeY>
   <Width>320</Width>
   <Interactions>
